@@ -2,7 +2,7 @@ import News from './news/news';
 import Sources from './sources/sources';
 
 
-interface IArticle {
+interface Article {
     source: {
         id: string | null;
         name: string;
@@ -16,7 +16,7 @@ interface IArticle {
     content: string | null;
 }
 
-interface ISource {
+interface Source {
     id: string;
     name: string;
     description: string;
@@ -26,15 +26,15 @@ interface ISource {
     country: string;
 }
 
-interface INewsResponse {
+interface NewsResponse {
     status: string;
     totalResults: number;
-    articles: IArticle[];
+    articles: Article[];
 }
 
 interface ISourcesResponse {
     status: string;
-    sources: ISource[];
+    sources: Source[];
 }
 
 export class AppView {
@@ -46,7 +46,7 @@ export class AppView {
         this.sources = new Sources();
     }
 
-    drawNews(data: INewsResponse | undefined): void {
+    drawNews(data: NewsResponse | undefined): void {
         const values = data?.articles ? data?.articles : [];
         this.news.draw(values);
     }
